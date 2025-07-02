@@ -1,2 +1,2 @@
 ## Ссылка на демо плеера
-Страница с плеером: [index.html](index.html)
+[Страница с плеером](https://levikovcollector.github.io/devman-video/index.html)
