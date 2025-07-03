@@ -56,26 +56,46 @@
     .roboto-time {
       font-family: "Roboto", sans-serif;
       font-optical-sizing: auto;
-      font-weight: <weight>;
+      font-weight: 1;
       font-style: normal;
       font-variation-settings:
         "wdth" 400;
 }
     .middle-container{
         display: flex;
+        flex-grow: 1;
 
     }
     .progress-bar{
       flex-grow: 1;
       background-color: grey;
+      height: 7px;
+      margin-top: 5px;
+      border-radius: 10px;
+      margin-left: 8px;
     }
     .progress-slider{
     background-color: red;
-    }
+    height: 7px;
+    border-radius: 10px;
+      }
+
+      .dot {
+  height: 10px;
+  width: 10px;
+  background-color: red;
+  border-radius: 50%;
+  display: inline-block;\
+      border-style: solid;
+    border-width: 3px;
+    border-color: white;
+    border-style: solid;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */
+}
 
   </style>
 
-  <title>Player2</title>
+  <title>Player3</title>
 </head>
 <body>
 <div id="player" class='player'>
@@ -89,22 +109,26 @@
         <button id="pause_button" class="js-pause-button  player-button">
           <div class="fa fa-pause"></div>
         </button>
-        <button id="mute_button" class="js-mute-button  player-button">
-          <div class="fa fa-volume-off"></div>
-        </button>
-        <button id="volume_on_button" class="js-volume-button  player-button">
+        <button id="volume_on_button" class="js-volume-button  player-button" >
           <div class="fa fa-volume-up"></div>
         </button>
+        <button id="mute_button" class="js-mute-button  player-button" >
+          <div class="fa fa-volume-off" ></div>
+        </button>
+
     </div>
     <div  class="middle-container">
          <div class="current-time roboto-time">
             <span class="js-current-time"></span>
         </div>
          <div class="js-progress progress-bar" >
-      <div class="js-progress-slider progress-slider" >Прогресс</div>
+      <div class="js-progress-slider progress-slider" ></div>
+             <span class="dot"></span>
     </div>
+
          <div class="duration roboto-time">
               <span class="js-duration"></span>
+
          </div>
      </div>
     <div>
@@ -112,6 +136,7 @@
         <button id="full_mode_button" class="js-fullscreen-button fa fa-expand player-button"></button>
     </div>
     </div>
+
 
 
 
