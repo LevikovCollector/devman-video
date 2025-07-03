@@ -1,146 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
-  <link rel="icon" href="favicon.png" type="image/x-icon">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta charset="UTF-8">
+    <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="favicon.png" rel="icon" type="image/x-icon">
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="https://unpkg.com/playable@2.10.3/dist/statics/playable.bundle.min.js"></script>
-<script src="player.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-  <style type="text/css">
-    .player-button {
-            border-style: none;
-            cursor: pointer; color: white;
-            background-color: transparent;
-            font-size: larger;
-            padding: 12px;
-            padding-inline: 3px;
-            margin-inline: 6px;
-           }
-    .player {
-              width: 800px; height: 600px;
+    <script src="https://unpkg.com/playable@2.10.3/dist/statics/playable.bundle.min.js"></script>
+    <script src="player.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
+    <style type="text/css">
+        .player-button {
+                border-style: none;
+                cursor: pointer; color: white;
+                background-color: transparent;
+                font-size: larger;
+                padding: 12px;
+                padding-inline: 3px;
+                margin-inline: 6px;
+               }
+        .player {
+                  width: 800px; height: 600px;
+                  display: flex;
+                  flex-direction: column;
+                  flex-grow: 1;
+                  background: black;
+                  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+
+                }
+
+        .video-container{
+          flex-grow: 1;
+        }
+        .video-box-flex{
               display: flex;
-              flex-direction: column;
-              flex-grow: 1;
-              background: black;
-              box-shadow: 0 0 10px rgba(0,0,0,0.5);
+              justify-content: space-between; /* Распределяет пространство между группами */
+              align-items: center;
+              padding-right: 3px;
 
-            }
-
-    .video-container{
-      flex-grow: 1;
-    }
-    .video-box-flex{
-          display: flex;
-          justify-content: space-between; /* Распределяет пространство между группами */
-          align-items: center;
-          padding-right: 3px;
-
-    }
-    .spacer {
-    flex-grow: 1;
-  }
-    .duration{
-    padding-right: 2px;
-    color: white;
-    }
-    .current-time{
-      padding-left: 10px;
-      color: white;
-
-
-    }
-    .roboto-time {
-      font-family: "Roboto", sans-serif;
-      font-optical-sizing: auto;
-      font-weight: 1;
-      font-style: normal;
-      font-variation-settings:
-        "wdth" 400;
-}
-    .middle-container{
-        display: flex;
+        }
+        .spacer {
         flex-grow: 1;
-
-    }
-    .progress-bar{
-      flex-grow: 1;
-      background-color: grey;
-      height: 7px;
-      margin-top: 5px;
-      border-radius: 10px;
-      margin-left: 8px;
-    }
-    .progress-slider{
-    background-color: red;
-    height: 7px;
-    border-radius: 10px;
       }
+        .duration{
+        padding-right: 2px;
+        color: white;
+        }
+        .current-time{
+          padding-left: 10px;
+          color: white;
 
-      .dot {
-  height: 10px;
-  width: 10px;
-  background-color: red;
-  border-radius: 50%;
-  display: inline-block;\
-      border-style: solid;
-    border-width: 3px;
-    border-color: white;
-    border-style: solid;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */
-}
 
-  </style>
+        }
+        .roboto-time {
+          font-family: "Roboto", sans-serif;
+          font-optical-sizing: auto;
+          font-weight: 1;
+          font-style: normal;
+          font-variation-settings:
+            "wdth" 400;
+    }
+        .middle-container{
+            display: flex;
+            flex-grow: 1;
 
-  <title>Player3</title>
+        }
+        .progress-bar{
+          flex-grow: 1;
+          background-color: grey;
+          height: 7px;
+          margin-top: 5px;
+          border-radius: 10px;
+          margin-left: 8px;
+        }
+        .progress-slider{
+        background-color: red;
+        height: 7px;
+        border-radius: 10px;
+          }
+
+          .dot {
+      height: 10px;
+      width: 10px;
+      background-color: red;
+      border-radius: 50%;
+      display: inline-block;\
+          border-style: solid;
+        border-width: 3px;
+        border-color: white;
+        border-style: solid;
+        box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Параметры тени */
+    }
+
+    </style>
+
+    <title>Player3</title>
 </head>
 <body>
-<div id="player" class='player'>
-  <div class="js-video-container video-container">
-  </div>
-  <div class="video-box-flex">
-    <div>
-        <button id="play_button" class="js-play-button player-button">
-          <div class="fa fa-play"></div>
-        </button>
-        <button id="pause_button" class="js-pause-button  player-button">
-          <div class="fa fa-pause"></div>
-        </button>
-        <button id="volume_on_button" class="js-volume-button  player-button"  >
-          <div class="fa fa-volume-up"></div>
-        </button>
-        <button id="mute_button" class="js-mute-button  player-button" hidden="hidden">
-          <div class="fa fa-volume-off" ></div>
-        </button>
-
+<div class='player' id="player">
+    <div class="js-video-container video-container">
     </div>
-    <div  class="middle-container">
-         <div class="current-time roboto-time">
-            <span class="js-current-time"></span>
+    <div class="video-box-flex">
+        <div>
+            <button class="js-play-button player-button" id="play_button">
+                <i class="fa fa-play"></i>
+            </button>
+            <button class="js-pause-button  player-button" id="pause_button">
+                <i class="fa fa-pause"></i>
+            </button>
+            <button class="js-volume-button  player-button" id="volume_on_button">
+                <i class="fa fa-volume-off"></i>
+            </button>
+            <button class="js-mute-button  player-button" id="mute_button">
+                <i class="fa fa-volume-up"></i>
+            </button>
+
         </div>
-         <div class="js-progress progress-bar" >
-      <div class="js-progress-slider progress-slider" ></div>
-             <span class="dot"></span>
+        <div class="middle-container">
+            <div class="current-time roboto-time">
+                <span class="js-current-time"></span>
+            </div>
+            <div class="js-progress progress-bar">
+                <div class="js-progress-slider progress-slider"></div>
+                <span class="dot"></span>
+            </div>
+
+            <div class="duration roboto-time">
+                <span class="js-duration"></span>
+
+            </div>
+        </div>
+        <div>
+            <div class="spacer"></div>
+            <button class="js-fullscreen-button fa fa-expand player-button" id="full_mode_button"></button>
+        </div>
     </div>
 
-         <div class="duration roboto-time">
-              <span class="js-duration"></span>
 
-         </div>
-     </div>
-    <div>
-         <div class="spacer"></div>
-        <button id="full_mode_button" class="js-fullscreen-button fa fa-expand player-button"></button>
-    </div>
-    </div>
-
-
-
-
-  </div>
+</div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -148,7 +147,7 @@
 <script src="player.js"></script>
 
 <script type="text/javascript">
-  createPlayer({elementId: 'player'});
+    createPlayer({elementId: 'player'});
 </script>
 </body>
 </html>
