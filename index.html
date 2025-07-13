@@ -17,9 +17,9 @@
                 border-style: none;
                 cursor: pointer; color: white;
                 background-color: transparent;
-                font-size: larger;
-                height: 25px;
-                width: 46px;
+                font-size: 20px;
+                height: 35px;
+                width: 35px;
                }
         .player {
                   width: 800px; height: 600px;
@@ -45,11 +45,9 @@
         flex-grow: 1;
       }
         .duration{
-        padding-right: 2px;
         color: white;
         }
         .current-time{
-          padding-left: 10px;
           color: white;
 
 
@@ -65,13 +63,14 @@
         .middle-container{
             display: flex;
             flex-grow: 1;
+            align-items: center;
+            column-gap: 10px;
 
         }
         .progress-bar{
           flex-grow: 1;
           background-color: grey;
           height: 7px;
-          margin-top: 5px;
           border-radius: 10px;
           margin-left: 8px;
           display: flex;
@@ -90,7 +89,6 @@
       transition-property: opacity;
       transition-duration: 300ms;
       transition-timing-function: ease-in;
-
       opacity: 0;
       border-radius: 50%;
       display: inline-block;
